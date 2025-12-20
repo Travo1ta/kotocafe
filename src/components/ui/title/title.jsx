@@ -1,6 +1,6 @@
 import React from "react";
 import './style.css';
-import { TitleSize } from './constants';  // ← импорт из constants.js
+import { TitleSize } from './constants';
 
 function Title({ children, size = TitleSize.DEFAULT }) {
     const Tag = size === TitleSize.BIG ? 'h1' : 
