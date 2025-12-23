@@ -8,10 +8,10 @@ import "./style.css";
 
 function StarsList() {
   return (
-    <section className="stars-list">
+    <section className="star-list">
       <Title size={TitleSize.BIG}>Наши звёзды</Title>
-      <ul className="stars-list__list">
-        <li className="stars-list__item">
+      <ul className="star-list__list" >
+        <li className="star-list__item">
           <StarCard />
         </li>
       </ul>

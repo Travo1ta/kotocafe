@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   padding-right: 90px;
-  padding-left: 09px;
+  padding-left: 9px;
   padding-top: 100px;
   padding-bottom: 80px;
   background-color: #ffeead;
@@ -49,6 +49,7 @@
   font-size: 0;
   line-height: 0;
   text-align: center;
+  list-style: none;
 }
 
 .star-list__item {

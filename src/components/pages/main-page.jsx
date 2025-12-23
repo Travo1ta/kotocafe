@@ -3,11 +3,11 @@ import About from "../blocs/about/about";
 import StarsList from "../blocs/stars-list/stars-list";
 
 
-function MainPage() {
+function MainPage({ stars }) {
   return (
        <>
       <About />
-      <StarsList />
+      <StarsList stars={stars}/>
     </>
   );
 }
