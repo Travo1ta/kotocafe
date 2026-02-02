@@ -3,7 +3,6 @@ import { CatFeature } from "./constants";
 import styled from "styled-components";
 
 const StyledStarIcon = styled.span`
-  /* Базовые стили для иконки */
   display: inline-block;
   font-weight: bold;
   padding: 8px 16px;
@@ -13,7 +12,7 @@ const StyledStarIcon = styled.span`
   color: #ffffff;
   border-radius: 8px;
   text-transform: uppercase;
-  background-color: ${props => props.bgcolor || "#000"};
+  background-color: ${props => props.$bgcolor || "#000"};
 `;
 
 function StarIcon({ className = "", feature }) {
@@ -43,7 +42,7 @@ function StarIcon({ className = "", feature }) {
   return options.text ? (
     <StyledStarIcon
       className={`star-icon ${className}`}
-      bgcolor={options.bgcolor}
+      $bgcolor={options.bgcolor}
     >
       {options.text}
     </StyledStarIcon>
