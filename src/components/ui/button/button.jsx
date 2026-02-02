@@ -4,7 +4,7 @@ import { StyledButton } from "./styles";
 function Button({ children, minWidth, link, className }) {
   return (
     <StyledButton
-      $minWidth={minWidth}  // Используем префикс $ для transient prop
+      $minWidth={minWidth}
       {...(link ? { href: link } : { as: "button", type: "button" })}
       className={className}
     >

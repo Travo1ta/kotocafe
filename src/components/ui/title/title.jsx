@@ -1,34 +1,24 @@
 import React from "react";
-import styled from "styled-components";
-import { TitleSize } from './constants';
+import { StyledTitle } from "./styles";
+import { TitleSize, TitleLevel } from "./constants";
 
-const StyledTitle = styled.h1`
-  margin: 0;
-  padding: 0;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 41px;
-  
-  ${props => props.size === TitleSize.SMALL && `
-    line-height: 32px;
-    font-size: 28px;
-  `}
-  
-  ${props => props.size === TitleSize.BIG && `
-    line-height: 50px;
-    font-size: 44px;
-  `}
-`;
-
-function Title({ children, size, as, ...props }) {
-   const Tag = as || (size === TitleSize.BIG ? 'h1' :
-      size === TitleSize.SMALL ? 'h3' : 'h2');
-
-   return (
-      <StyledTitle as={Tag} size={size} {...props}>
-         {children}
-      </StyledTitle>
-   );
+// Заголовок
+function Title({
+  level = TitleLevel.H1, // уровень h1, h2 и т.д. TitleLevel
+  size = TitleSize.DEFAULT, // размер заголовка TitleSize
+  children, // дочерний элемент, который будет отображён в заголовке
+  className = ""
+}) {
+  return (
+    <StyledTitle 
+      as={`h${level}`} 
+      $size={size} 
+      className={`title ${className}`}
+    >
+      {children}
+    </StyledTitle>
+  );
 }
 
 export default Title;
+export { TitleSize, TitleLevel };
