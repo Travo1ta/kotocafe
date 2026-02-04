@@ -1,24 +1,30 @@
 import React from "react";
 import Title from "../../ui/title/title";
 import { TitleSize } from "../../ui/title/constants";
-import "./style.css";
+import {
+  AboutSection,
+  AboutWrapper,
+  AboutText,
+  WorkTime,
+  Address
+} from "./styles";
 
 function About() {
   return (
-    <section className="about">
-      <div className="about__wrapper">
+    <AboutSection>
+      <AboutWrapper>
         <Title size={TitleSize.BIG}>Первое в России котокафе</Title>
-        <p className="about__text">
+        <AboutText>
           Крупнейшее котокафе России, в котором живёт 50 кошек и котов, и каждый
           из них ищет новый дом. Животных можно гладить, фотографировать, играть
           с ними.
-        </p>
-        <p className="about__work-time">Рабочее время с 8:00 до 23:00</p>
-        <p className="about__address">
+        </AboutText>
+        <WorkTime>Рабочее время с 8:00 до 23:00</WorkTime>
+        <Address>
           Санкт-Петербург, набережная реки Карповки, дом 5, литера П
-        </p>
-      </div>
-    </section>
+        </Address>
+      </AboutWrapper>
+    </AboutSection>
   );
 }
 
