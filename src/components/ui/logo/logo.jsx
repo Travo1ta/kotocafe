@@ -8,30 +8,29 @@ const LogoLink = styled.a`
   gap: 12px;
   text-decoration: none;
   color: inherit;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const LogoImage = styled.img`
   width: 40px;
   height: 40px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-  
-  @media (max-width: 768px) {
-    width: 32px;
-    height: 32px;
-  }
+  flex-shrink: 0;
 `;
 
 const LogoText = styled.span`
-  font-family: 'Arial', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily};
   font-size: 20px;
   font-weight: 700;
-  color: #ff6b6b;
+  color: ${(props) => props.theme.colorBlack};
   letter-spacing: 0.5px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   
   @media (max-width: 768px) {
-    font-size: 18px;
+    display: none;
   }
 `;
 
@@ -43,6 +42,7 @@ function Logo() {
         alt="Логотип Котокафе" 
         width="40"
         height="40"
+        loading="lazy"
       />
       <LogoText>Котокафе</LogoText>
     </LogoLink>

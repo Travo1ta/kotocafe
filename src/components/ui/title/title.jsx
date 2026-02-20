@@ -2,11 +2,10 @@ import React from "react";
 import { StyledTitle } from "./styles";
 import { TitleSize, TitleLevel } from "./constants";
 
-// Заголовок
 function Title({
-  level = TitleLevel.H1, // уровень h1, h2 и т.д. TitleLevel
-  size = TitleSize.DEFAULT, // размер заголовка TitleSize
-  children, // дочерний элемент, который будет отображён в заголовке
+  level = TitleLevel.H1,
+  size = TitleSize.DEFAULT,
+  children,
   className = ""
 }) {
   return (
@@ -21,4 +20,3 @@ function Title({
 }
 
 export default Title;
-export { TitleSize, TitleLevel };

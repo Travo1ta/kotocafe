@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { StyledSection } from "../../../styled";
 
-// Импортируем SVG как строки (правильный способ для Vite)
+// Импортируем SVG как строки
 const aboutSvgUrl = "/src/assets/about.svg";
 const mapMarkSvgUrl = "/src/assets/map-mark.svg";
 
@@ -11,18 +12,18 @@ const Paragraph = styled.p`
   box-sizing: border-box;
 `;
 
-// Основная секция
-export const AboutSection = styled.section`
-  display: flex;
-  position: relative;
+// Секция About
+export const AboutSection = styled(StyledSection)`
   padding-left: ${(props) => props.theme.pagePadding};
   padding-top: 159px;
   padding-bottom: 159px;
   padding-right: 603px;
+  
+  /* Специфичные для About стили */
   background-color: ${(props) => props.theme.colorForLightBackground};
   align-items: center;
+  position: relative;
   z-index: 1;
-  box-sizing: border-box;
 
   &::after {
     position: absolute;
@@ -36,15 +37,14 @@ export const AboutSection = styled.section`
     margin: auto;
     background: url(${aboutSvgUrl}) no-repeat center;
     background-size: contain;
+    z-index: 2;
   }
 `;
 
 // Обертка контента
 export const AboutWrapper = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   position: relative;
+  box-sizing: border-box;
   min-width: 650px;
   z-index: 3;
 `;
@@ -65,6 +65,7 @@ export const WorkTime = styled(Paragraph)`
   padding: 8px;
   border-radius: 8px;
   background-color: ${(props) => props.theme.colorForDarkBackground};
+  color: ${(props) => props.theme.colorWhite};
   vertical-align: middle;
 `;
 
