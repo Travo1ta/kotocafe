@@ -10,6 +10,7 @@ function PageWrapper(prop) {
       <>
          <Header />
          <main className="page-wrapper__main">
+           {/* <MainPage {...prop} />  */}
             <BuyPage {...prop} /> {/* Теперь рендерится BuyPage */}
          </main>
          <Footer />
