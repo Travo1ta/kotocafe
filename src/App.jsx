@@ -6,12 +6,13 @@ import PageWrapper from "./components/layout/page-wrapper/page-wrapper";
 import gallery from "./mocks/gallery";
 
 function App() {
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <GlobalStyle />
-      <PageWrapper gallery={gallery} />
-    </ThemeProvider>
-  );
+
+   return (
+      <ThemeProvider theme={defaultTheme}>
+         <GlobalStyle />
+         <PageWrapper gallery={gallery} />
+      </ThemeProvider>
+   );
 }
 
 export default App;

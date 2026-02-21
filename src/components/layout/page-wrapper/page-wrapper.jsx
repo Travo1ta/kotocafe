@@ -1,17 +1,16 @@
 import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import BuyPage from "../../pages/buy-page"; // Переключили на BuyPage
+import BuyPage from "../../pages/buy-page";
 import "./style.css";
 
-// Обёртка для контента страниц
-function PageWrapper(prop) {
+function PageWrapper({ gallery }) {
+
    return (
       <>
          <Header />
          <main className="page-wrapper__main">
-           {/* <MainPage {...prop} />  */}
-            <BuyPage {...prop} /> {/* Теперь рендерится BuyPage */}
+            <BuyPage gallery={gallery} />
          </main>
          <Footer />
       </>
