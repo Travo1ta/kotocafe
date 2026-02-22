@@ -16,6 +16,7 @@ import {
 
 function Gallery({ slides = [] }) {
    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+   const [activeSlide, setActiveSlide] = useState(0);
 
    if (!slides || slides.length === 0) {
       return <div>Нет изображений</div>;
@@ -32,6 +33,9 @@ function Gallery({ slides = [] }) {
             thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs]}
             navigation={true}
+            onSlideChange={(swiper) => {
+               setActiveSlide(swiper.realIndex);
+            }}
          >
             {extendedSlides.map((slide, index) => (
                <SwiperSlide key={`${slide.id}-${index}`}>
@@ -57,7 +61,11 @@ function Gallery({ slides = [] }) {
             >
                {extendedSlides.map((slide, index) => (
                   <SwiperSlide key={`thumb-${slide.id}-${index}`}>
-                     <StyleSlideMini src={slide.src} alt={slide.alt} />
+                     <StyleSlideMini
+                        src={slide.src}
+                        alt={slide.alt}
+                        $active={activeSlide === index}
+                     />
                   </SwiperSlide>
                ))}
             </StyledSwiperMini>

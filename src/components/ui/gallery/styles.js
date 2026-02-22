@@ -46,7 +46,6 @@ export const StyledSwiperMini = styled(Swiper)`
   margin: 0 auto;
   
   .swiper-slide {
-    opacity: 0.5;
     transition: opacity 0.3s ease;
     cursor: pointer;
     
@@ -76,4 +75,6 @@ export const StyleSlideMini = styled.img`
   border-radius: 5px;
   display: block;
   background-color: #ddd;
+  filter: brightness(${(props) => (props.$active ? "100%" : "50%")});
+  transition: filter 0.3s ease;
 `;
