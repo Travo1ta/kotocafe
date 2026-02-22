@@ -5,7 +5,6 @@ import { StyledSection, StyledTitle, GalleryWrapper } from "./styles";
 
 function CafeGallery({ gallery }) {
   useEffect(() => {
-    console.log("CafeGallery received gallery:", gallery);
   }, [gallery]);
 
   return (

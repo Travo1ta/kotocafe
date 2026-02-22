@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { Swiper } from "swiper/react";
+import Button from "../button/button";
 
 export const SliderWrapper = styled.div`
   margin-top: 20px;
   position: relative;
   width: 100%;
+  max-width: 728px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const StyledSwiper = styled(Swiper)`
@@ -77,4 +81,36 @@ export const StyleSlideMini = styled.img`
   background-color: #ddd;
   filter: brightness(${(props) => (props.$active ? "100%" : "50%")});
   transition: filter 0.3s ease;
+`;
+
+export const StyledButtonLeft = styled(Button)`
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  min-width: auto;
+  padding: 0;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.colorForButton};
+  color: ${(props) => props.theme.colorWhite};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background-color: ${(props) => props.theme.colorForButtonHover};
+  }
+  
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+`;
+
+export const StyledButtonRight = styled(StyledButtonLeft)`
+  left: auto;
+  right: -50px;
 `;

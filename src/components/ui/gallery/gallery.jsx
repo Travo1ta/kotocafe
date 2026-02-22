@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {SwiperSlide } from "swiper/react";
+import React, { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -11,12 +11,35 @@ import {
    StyledSwiper,
    StyledSwiperMini,
    StyleSlide,
-   StyleSlideMini
+   StyleSlideMini,
+   StyledButtonLeft,
+   StyledButtonRight
 } from "./styles";
 
 function Gallery({ slides = [] }) {
    const [thumbsSwiper, setThumbsSwiper] = useState(null);
    const [activeSlide, setActiveSlide] = useState(0);
+
+   const navigationPrevRef = useRef(null);
+   const navigationNextRef = useRef(null);
+
+   // Эффект для настройки навигации после монтирования
+   useEffect(() => {
+      if (thumbsSwiper) {
+         // Даем время на монтирование DOM
+         const timer = setTimeout(() => {
+            if (navigationPrevRef.current && navigationNextRef.current) {
+               thumbsSwiper.params.navigation.prevEl = navigationPrevRef.current;
+               thumbsSwiper.params.navigation.nextEl = navigationNextRef.current;
+               thumbsSwiper.navigation.destroy(); // Удаляем старую навигацию
+               thumbsSwiper.navigation.init();    // Инициализируем новую
+               thumbsSwiper.navigation.update();   // Обновляем
+            }
+         }, 100);
+
+         return () => clearTimeout(timer);
+      }
+   }, [thumbsSwiper]);
 
    if (!slides || slides.length === 0) {
       return <div>Нет изображений</div>;
@@ -69,6 +92,13 @@ function Gallery({ slides = [] }) {
                   </SwiperSlide>
                ))}
             </StyledSwiperMini>
+
+            <StyledButtonLeft ref={navigationPrevRef}>
+               <span style={{ fontSize: '24px', lineHeight: '1' }}>←</span>
+            </StyledButtonLeft>
+            <StyledButtonRight ref={navigationNextRef}>
+               <span style={{ fontSize: '24px', lineHeight: '1' }}>→</span>
+            </StyledButtonRight>
          </SliderWrapper>
       </>
    );
