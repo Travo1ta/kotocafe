@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TitleSize } from "../../ui/title/constants";
 import Gallery from "../../ui/gallery/gallery";
 import { StyledSection, StyledTitle, GalleryWrapper } from "./styles";
 
+// Галерея «Котокафе».
 function CafeGallery({ gallery }) {
-  useEffect(() => {
-  }, [gallery]);
-
-  return (
+  return gallery?.length ? (
     <StyledSection>
       <StyledTitle level={2} size={TitleSize.BIG}>
         Галерея нашего кафе
@@ -16,7 +14,7 @@ function CafeGallery({ gallery }) {
         <Gallery slides={gallery} />
       </GalleryWrapper>
     </StyledSection>
-  );
+  ) : null;
 }
 
 export default CafeGallery;

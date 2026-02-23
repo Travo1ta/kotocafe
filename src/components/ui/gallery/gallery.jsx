@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
