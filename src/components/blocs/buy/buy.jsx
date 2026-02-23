@@ -3,6 +3,7 @@ import Form from "../../../styled/form/form";
 import Label from "../../../styled/label/label";
 import Button from "../../ui/button/button";
 import RadioButton from "../../ui/radio-button/radio-button";
+import { Accordion } from "../../ui/accordion/accordion";
 import { TitleSize } from "../../ui/title/constants";
 import StyledUl from "../../../styled/ul/ul";
 import StyledLi from "../../../styled/li/li";
@@ -11,13 +12,17 @@ import {
    Price,
    FormItem,
    StyleTitle,
-   RadioLabelForTime
+   RadioLabelForTime,
+   RadioLabelForTicket,
 } from "./styles";
 
-// страница покупки
 function Buy({ buyOptions }) {
-   const { durationOptions } = buyOptions;
+   const { durationOptions, ticketOptions } = buyOptions;
    const [duration, setDuration] = useState(durationOptions[0]);
+   const [ticket, setTicket] = useState(ticketOptions[0].id);
+
+   // Расчет цены (временный)
+   const basePrice = ticketOptions.find(t => t.id === ticket)?.price || 1000;
 
    return (
       <StyledSection>
@@ -34,7 +39,7 @@ function Buy({ buyOptions }) {
                            labelComponent={RadioLabelForTime}
                            selectValue={duration}
                            value={option}
-                           text={option}
+                           text={`${option} ч`}
                            name="duration"
                            onChange={(el) => {
                               setDuration(Number(el.target.value));
@@ -47,13 +52,37 @@ function Buy({ buyOptions }) {
 
             <FormItem $bottom={22}>
                <Label $margin={12}>Тип билета</Label>
-               {/* Здесь будут radio кнопки для типа билета */}
+               <StyledUl $isGridList $indent={12} $align="left">
+                  {ticketOptions.map((option) => (
+                     <StyledLi key={option.id}>
+                        <RadioButton
+                           labelComponent={RadioLabelForTicket}
+                           selectValue={ticket}
+                           value={option.id}
+                           text={option.title}
+                           name="ticket"
+                           onChange={(el) => {
+                              setTicket(Number(el.target.value));
+                           }}
+                        />
+                     </StyledLi>
+                  ))}
+               </StyledUl>
+            </FormItem>
+
+            <FormItem $bottom={22}>
+               <Accordion
+                  titleComponent={RadioLabelForTicket}
+                  textComponent="div"
+                  content={ticketOptions}
+                  isHtml={true}
+               />
             </FormItem>
 
             <Label $small $margin={6}>
                Цена
             </Label>
-            <Price>500 руб.</Price>
+            <Price>{basePrice} руб.</Price>
             <Button minWidth={460}>Купить билет</Button>
          </Form>
       </StyledSection>

@@ -48,3 +48,32 @@ export const RadioLabelForTime = styled.span`
     background-color: ${(props) => props.$isChecked ? props.theme.colorForButtonHover : props.theme.colorForLightBackground};
   }
 `;
+
+// Стилизованный компонент для отображения радио-кнопок типа билета
+export const RadioLabelForTicket = styled.span`
+  display: inline-block;
+  width: 220px;
+  padding: 15px 20px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: ${(props) => props.$isChecked ? props.theme.colorWhite : props.theme.colorBlackForText};
+  background-color: ${(props) => props.$isChecked ? props.theme.colorForButton : props.theme.colorWhite};
+  border: 2px solid ${(props) => props.$isChecked ? props.theme.colorForButton : props.theme.colorGray};
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out;
+
+  &:hover {
+    background-color: ${(props) => props.$isChecked ? props.theme.colorForButtonHover : props.theme.colorForLightBackground};
+    border-color: ${(props) => props.$isChecked ? props.theme.colorForButtonHover : props.theme.colorGray};
+  }
+`;
+
+export const TicketPrice = styled.span`
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: ${(props) => props.theme.colorBlackForText};
+  opacity: 0.7;
+`;
