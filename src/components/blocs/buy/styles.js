@@ -27,3 +27,24 @@ export const Price = styled.span`
   color: ${(props) => props.theme.colorForButton};
   margin-bottom: 20px;
 `;
+
+// Стилизованный компонент для отображения радио-кнопок продолжительности
+export const RadioLabelForTime = styled.span`
+  display: inline-block;
+  min-width: 60px;
+  height: 60px;
+  padding: 0 10px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 60px;
+  text-align: center;
+  color: ${(props) => props.$isChecked ? props.theme.colorWhite : props.theme.colorBlackForText};
+  background-color: ${(props) => props.$isChecked ? props.theme.colorForButton : props.theme.colorGray};
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+  &:hover {
+    background-color: ${(props) => props.$isChecked ? props.theme.colorForButtonHover : props.theme.colorForLightBackground};
+  }
+`;
