@@ -28,6 +28,16 @@ function Buy({ buyOptions }) {
    // Вычисляем цену: часы * цена билета
    const price = duration * selectedTicket.price;
 
+   // Обработчик покупки
+   const handleBuy = () => {
+      alert(
+         `Спасибо за покупку.
+Вы приобрели билет класса: ${selectedTicket.title}.
+Продолжительность посещения (часов): ${duration}.
+Цена билета: ${price} руб.`
+      );
+   };
+
    // Создаем контент для аккордеона
    const accordionContent = ticketOptions.map((option) => ({
       id: option.id,
@@ -85,7 +95,9 @@ function Buy({ buyOptions }) {
                Цена
             </Label>
             <Price>{price} руб.</Price>
-            <Button minWidth={460}>Купить билет</Button>
+            <Button minWidth={460} onClick={handleBuy}>
+               Купить билет
+            </Button>
          </Form>
       </StyledSection>
    );
