@@ -22,6 +22,12 @@ function Buy({ buyOptions }) {
    const [duration, setDuration] = useState(durationOptions[0]);
    const [selectType, setSelectType] = useState(ticketOptions[0].id);
 
+   // Находим выбранный тип билета по id
+   const selectedTicket = ticketOptions.find((option) => option.id === selectType);
+
+   // Вычисляем цену: часы * цена билета
+   const price = duration * selectedTicket.price;
+
    // Создаем контент для аккордеона
    const accordionContent = ticketOptions.map((option) => ({
       id: option.id,
@@ -38,9 +44,6 @@ function Buy({ buyOptions }) {
       ),
       description: option.description
    }));
-
-   // Расчет цены
-   const basePrice = ticketOptions.find(t => t.id === selectType)?.price || 1000;
 
    return (
       <StyledSection>
@@ -70,7 +73,6 @@ function Buy({ buyOptions }) {
 
             <FormItem $bottom={22}>
                <Label $margin={12}>Тип билета</Label>
-               {/* Аккордеон с радиокнопками в заголовке */}
                <Accordion
                   titleComponent={RadioLabelForType}
                   textComponent={AccordionText}
@@ -82,7 +84,7 @@ function Buy({ buyOptions }) {
             <Label $small $margin={6}>
                Цена
             </Label>
-            <Price>{basePrice} руб.</Price>
+            <Price>{price} руб.</Price>
             <Button minWidth={460}>Купить билет</Button>
          </Form>
       </StyledSection>
