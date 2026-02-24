@@ -13,16 +13,34 @@ import {
    FormItem,
    StyleTitle,
    RadioLabelForTime,
-   RadioLabelForTicket,
+   RadioLabelForType,
+   AccordionText
 } from "./styles";
 
 function Buy({ buyOptions }) {
    const { durationOptions, ticketOptions } = buyOptions;
    const [duration, setDuration] = useState(durationOptions[0]);
-   const [ticket, setTicket] = useState(ticketOptions[0].id);
+   const [selectType, setSelectType] = useState(ticketOptions[0].id);
 
-   // Расчет цены (временный)
-   const basePrice = ticketOptions.find(t => t.id === ticket)?.price || 1000;
+   // Создаем контент для аккордеона
+   const accordionContent = ticketOptions.map((option) => ({
+      id: option.id,
+      title: (
+         <RadioButton
+            labelComponent={RadioLabelForType}
+            selectValue={selectType}
+            value={option.id}
+            text={option.title}
+            onChange={(el) => {
+               setSelectType(Number(el.target.value));
+            }}
+         />
+      ),
+      description: option.description
+   }));
+
+   // Расчет цены
+   const basePrice = ticketOptions.find(t => t.id === selectType)?.price || 1000;
 
    return (
       <StyledSection>
@@ -52,29 +70,11 @@ function Buy({ buyOptions }) {
 
             <FormItem $bottom={22}>
                <Label $margin={12}>Тип билета</Label>
-               <StyledUl $isGridList $indent={12} $align="left">
-                  {ticketOptions.map((option) => (
-                     <StyledLi key={option.id}>
-                        <RadioButton
-                           labelComponent={RadioLabelForTicket}
-                           selectValue={ticket}
-                           value={option.id}
-                           text={option.title}
-                           name="ticket"
-                           onChange={(el) => {
-                              setTicket(Number(el.target.value));
-                           }}
-                        />
-                     </StyledLi>
-                  ))}
-               </StyledUl>
-            </FormItem>
-
-            <FormItem $bottom={22}>
+               {/* Аккордеон с радиокнопками в заголовке */}
                <Accordion
-                  titleComponent={RadioLabelForTicket}
-                  textComponent="div"
-                  content={ticketOptions}
+                  titleComponent={RadioLabelForType}
+                  textComponent={AccordionText}
+                  content={accordionContent}
                   isHtml={true}
                />
             </FormItem>

@@ -49,31 +49,36 @@ export const RadioLabelForTime = styled.span`
   }
 `;
 
-// Стилизованный компонент для отображения радио-кнопок типа билета
-export const RadioLabelForTicket = styled.span`
-  display: inline-block;
-  width: 220px;
+// Стилизованный компонент для отображения радио-кнопок типа билета в аккордеоне
+export const RadioLabelForType = styled.span`
+  display: block;
   padding: 15px 20px;
   font-weight: 700;
   font-size: 18px;
-  line-height: 1.2;
-  color: ${(props) => props.$isChecked ? props.theme.colorWhite : props.theme.colorBlackForText};
-  background-color: ${(props) => props.$isChecked ? props.theme.colorForButton : props.theme.colorWhite};
-  border: 2px solid ${(props) => props.$isChecked ? props.theme.colorForButton : props.theme.colorGray};
-  border-radius: 10px;
+  color: ${(props) => props.$isChecked ? props.theme.colorForButton : props.theme.colorBlackForText};
+  background-color: ${(props) => props.theme.colorWhite};
+  border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out;
+  transition: color 0.2s ease-out;
 
   &:hover {
-    background-color: ${(props) => props.$isChecked ? props.theme.colorForButtonHover : props.theme.colorForLightBackground};
-    border-color: ${(props) => props.$isChecked ? props.theme.colorForButtonHover : props.theme.colorGray};
+    color: ${(props) => props.theme.colorForButtonHover};
   }
 `;
 
-export const TicketPrice = styled.span`
-  display: block;
-  margin-top: 10px;
+// Стилизованный компонент для текста аккордеона
+export const AccordionText = styled.div`
+  padding: 0 20px 20px;
   font-size: 14px;
+  line-height: 1.5;
   color: ${(props) => props.theme.colorBlackForText};
-  opacity: 0.7;
+  
+  ul {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
 `;
