@@ -1,23 +1,27 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const StyledButton = styled.a`
+export const StyledButton = styled(Link)`
   display: block;
   min-height: 60px;
-  font-size: ${(props) => props.theme.fontSizeDefault};
-  min-width: ${(props) => props.$minWidth ? `${props.$minWidth}px` : "100%"};
+  padding: 0 24px;
+  min-width: ${(props) => (props.$maxWidth ? "100%" : "260px")};
   max-width: 700px;
-  font-weight: 700;
+  font-size: ${(props) => props.theme.fontSizeDefault};
+  font-weight: bold;
   line-height: 58px;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
   color: ${(props) => props.theme.colorWhite};
   background-color: ${(props) => props.theme.colorForButton};
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none;
   border: none;
   background-image: none;
   box-shadow: none;
   cursor: pointer;
   transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  box-sizing: border-box;
+  font-family: ${(props) => props.theme.fontFamily};
 
   &:hover,
   &:active {
@@ -27,5 +31,11 @@ export const StyledButton = styled.a`
 
   &:active {
     box-shadow: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    background-color: ${(props) => props.theme.colorForButton};
   }
 `;

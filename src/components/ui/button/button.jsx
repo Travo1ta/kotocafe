@@ -1,19 +1,24 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { StyledButton } from "./styles";
 
-const Button = forwardRef(
-   ({ children, minWidth, link, className, onClick }, ref) => {
-      return (
-         <StyledButton
-            ref={ref}
-            $minWidth={minWidth}
-            {...(link ? { href: link } : { as: "button", onClick, type: "button" })}
-            className={className}
-         >
-            {children}
-         </StyledButton>
-      );
-   }
-);
+function Button({
+   children, // дочерний элемент, отображаемый в кнопке
+   link, // ссылка
+   maxWidth, // делает кнопку на 100% родителя
+   className, // класс
+   onClick, // событие по клику
+   ...props // остальные переданные пропсы
+}) {
+   return (
+      <StyledButton
+         {...props}
+         $maxWidth={maxWidth}
+         {...(link ? { to: link } : { as: "button", onClick, type: "button" })}
+         className={className}
+      >
+         {children}
+      </StyledButton>
+   );
+}
 
 export default Button;

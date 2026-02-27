@@ -1,52 +1,26 @@
 import React from "react";
-import logo from "../../../assets/logo.svg";
-import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import { ReactComponent as LogoImage } from "../../../assets/logo.svg";
+import { AppRoute } from "../../../const";
+import { Text, StyledLogo, StyledLogoMainPage } from "./styles";
 
-const LogoLink = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-const LogoImage = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  flex-shrink: 0;
-`;
-
-const LogoText = styled.span`
-  font-family: ${(props) => props.theme.fontFamily};
-  font-size: 20px;
-  font-weight: 700;
-  color: ${(props) => props.theme.colorBlack};
-  letter-spacing: 0.5px;
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
+// Логотип сайта с названием
 function Logo() {
-  return (
-    <LogoLink href="/">
-      <LogoImage 
-        src={logo} 
-        alt="Логотип Котокафе" 
-        width="40"
-        height="40"
-        loading="lazy"
-      />
-      <LogoText>Котокафе</LogoText>
-    </LogoLink>
-  );
+   const { pathname } = useLocation(); // получаем текущий URL
+
+   // Если мы на главной странице - рендерим некликабельный логотип
+   // Если на другой странице - рендерим ссылку на главную
+   return pathname === AppRoute.MAIN ? (
+      <StyledLogoMainPage>
+         <LogoImage />
+         <Text>Котокафе</Text>
+      </StyledLogoMainPage>
+   ) : (
+      <StyledLogo to={AppRoute.MAIN}>
+         <LogoImage />
+         <Text>Котокафе</Text>
+      </StyledLogo>
+   );
 }
 
 export default Logo;
