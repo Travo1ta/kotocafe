@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../ui/logo/logo";
 import Nav from "../nav/nav";
+import { AppRoute } from "../../../const"; // импортируем константы
 
 const StyledHeader = styled.header`
   display: flex;
@@ -40,8 +41,8 @@ function Header() {
     <StyledHeader>
       <Logo />
       <NavLinks>
-        <StyledLink to="/">Главная</StyledLink>
-        <StyledLink to="/buy">Купить билет</StyledLink>
+        <StyledLink to={AppRoute.MAIN}>Главная</StyledLink>
+        <StyledLink to={AppRoute.BUY}>Купить билет</StyledLink>
       </NavLinks>
       <Nav />
     </StyledHeader>
