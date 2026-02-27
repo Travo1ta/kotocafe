@@ -1,18 +1,20 @@
 import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import "./style.css";
+import { Outlet } from "react-router-dom";
+import { Main } from "./styles";
 
-function PageWrapper({ children }) {
-   return (
-      <>
-         <Header />
-         <main className="page-wrapper__main">
-            {children}
-         </main>
-         <Footer />
-      </>
-   );
+// Обёртка для контента страниц
+function PageWrapper() {
+  return (
+    <>
+      <Header />
+      <Main>
+        <Outlet />
+      </Main>
+      <Footer />
+    </>
+  );
 }
 
 export default PageWrapper;
