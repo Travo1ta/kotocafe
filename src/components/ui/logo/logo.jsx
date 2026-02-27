@@ -1,26 +1,24 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { ReactComponent as LogoImage } from "../../../assets/logo.svg";
+import LogoImage from "../../../assets/logo.svg"; // измененный импорт
 import { AppRoute } from "../../../const";
 import { Text, StyledLogo, StyledLogoMainPage } from "./styles";
 
 // Логотип сайта с названием
 function Logo() {
-   const { pathname } = useLocation(); // получаем текущий URL
+  const { pathname } = useLocation();
 
-   // Если мы на главной странице - рендерим некликабельный логотип
-   // Если на другой странице - рендерим ссылку на главную
-   return pathname === AppRoute.MAIN ? (
-      <StyledLogoMainPage>
-         <LogoImage />
-         <Text>Котокафе</Text>
-      </StyledLogoMainPage>
-   ) : (
-      <StyledLogo to={AppRoute.MAIN}>
-         <LogoImage />
-         <Text>Котокафе</Text>
-      </StyledLogo>
-   );
+  return pathname === AppRoute.MAIN ? (
+    <StyledLogoMainPage>
+      <img src={LogoImage} alt="Котокафе" /> {/* используем img вместо ReactComponent */}
+      <Text>Котокафе</Text>
+    </StyledLogoMainPage>
+  ) : (
+    <StyledLogo to={AppRoute.MAIN}>
+      <img src={LogoImage} alt="Котокафе" />
+      <Text>Котокафе</Text>
+    </StyledLogo>
+  );
 }
 
 export default Logo;
