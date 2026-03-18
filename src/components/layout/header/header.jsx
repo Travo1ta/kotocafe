@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../ui/logo/logo";
 import Nav from "../nav/nav";
-import { AppRoute } from "../../../const"; // импортируем константы
+import { AppRoute } from "../../../const";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -37,16 +37,16 @@ const StyledLink = styled(Link)`
 `;
 
 function Header() {
-  return (
-    <StyledHeader>
-      <Logo />
-      <NavLinks>
-        <StyledLink to={AppRoute.MAIN}>Главная</StyledLink>
-        <StyledLink to={AppRoute.BUY}>Купить билет</StyledLink>
-      </NavLinks>
-      <Nav />
-    </StyledHeader>
-  );
+   return (
+      <StyledHeader>
+         <Logo />
+         <NavLinks>
+            <StyledLink to={AppRoute.MAIN}>Главная</StyledLink>
+            <StyledLink to={AppRoute.BUY}>Купить билет</StyledLink>
+         </NavLinks>
+         <Nav />
+      </StyledHeader>
+   );
 }
 
 export default Header;

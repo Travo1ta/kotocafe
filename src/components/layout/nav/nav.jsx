@@ -4,14 +4,13 @@ import Button from "../../ui/button/button";
 import { AppRoute } from "../../../const";
 import { StyledButton } from "./styles";
 
-// Массив с кнопками навигации
 const buttons = [
    {
       to: AppRoute.MAIN,
       button: (
          <StyledButton
+            key="nav-main"
             minWidth={260}
-            key={AppRoute.MAIN}
             link={AppRoute.MAIN}
          >
             Главная
@@ -22,8 +21,8 @@ const buttons = [
       to: AppRoute.BUY,
       button: (
          <Button
+            key="nav-buy"
             minWidth={260}
-            key={AppRoute.BUY}
             link={AppRoute.BUY}
          >
             Купить билет
@@ -33,15 +32,12 @@ const buttons = [
 ];
 
 function Nav() {
-   // Получаем текущий URL
    const pageUrl = useLocation().pathname;
 
    return (
       <nav>
          {buttons
-            // Фильтруем: убираем кнопку, ведущую на текущую страницу
             .filter((button) => button.to !== pageUrl)
-            // Рендерим оставшиеся кнопки
             .map((button) => button.button)}
       </nav>
    );

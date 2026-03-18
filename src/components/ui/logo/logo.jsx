@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import LogoImage from "../../../assets/logo.svg"; // измененный импорт
+import LogoImage from "../../../assets/logo.svg";
 import { AppRoute } from "../../../const";
 import { Text, StyledLogo, StyledLogoMainPage } from "./styles";
 

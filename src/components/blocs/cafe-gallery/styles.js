@@ -17,7 +17,6 @@ export const StyledSection = styled(BaseSection)`
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
-  min-height: 600px; /* Добавь минимальную высоту */
 
   &::before {
     position: absolute;
@@ -46,7 +45,7 @@ export const StyledSection = styled(BaseSection)`
 
 export const StyledTitle = styled(Title)`
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   position: relative;
   z-index: 3;
 `;
@@ -56,5 +55,13 @@ export const GalleryWrapper = styled.div`
   z-index: 3;
   max-width: 728px;
   margin: 0 auto;
-  width: 100%;
+  margin-bottom: 40px;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  margin-top: 20px;
 `;
